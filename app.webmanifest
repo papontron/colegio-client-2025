@@ -1,0 +1,24 @@
+{
+  "name": "Colegio Jesús el Nazareno",
+  "short_name": "IEP JN",
+  "start_url": "/",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "icons/announcement.png",
+      "type": "img/png",
+      "sizes": "40x40",
+      "purposo": "any maskable"
+    }
+  ],
+  "id": "some random unique id",
+  "description": "una marde de colegios global educativa",
+  "orientation": "portrait",
+  "theme_color": "#AA0920",
+  "background_color": "#ffaa01",
+  "lang": "es",
+  "categories": ["kids", "education"],
+  "screenshot": [
+    { "src": "icons/avatar.png", "type": "img/png", "sizes": "240x240" }
+  ]
+}
