@@ -1,13 +1,15 @@
 export function UpdateHorarioHandler({
-  status,
+  clientId,
+  ok,
   payload,
 }: {
-  status: "ok" | "notok";
+  clientId: string;
+  ok: boolean;
   payload: { horario: string };
 }) {
-  if (status != "ok") {
+  if (!ok) {
     console.log("the operation couldnt be done");
   } else {
-    console.log({ horario: payload.horario });
+    console.log({ horario: payload.horario, clientId });
   }
 }

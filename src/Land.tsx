@@ -2,6 +2,7 @@ import { Grid } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { Button } from "./components/ui/button";
 import SocketIO, { ClientEvents } from "./config/socket.io.config";
+import axios from "axios";
 export default function Land() {
   return (
     <div className="flex gap-4">
@@ -12,6 +13,9 @@ export default function Land() {
       >
         install
       </NavLink>
+      <Button className="cursor-pointer" onClick={postRequest}>
+        Post request
+      </Button>
       <Button
         className="cursor-pointer"
         onClick={() => {
@@ -27,4 +31,11 @@ export default function Land() {
       <Grid />
     </div>
   );
+  async function postRequest() {
+    const response = await axios.post("http://localhost:4000", {
+      name: "cristhian guerrero",
+    });
+    const data = response.data;
+    console.log({ data });
+  }
 }

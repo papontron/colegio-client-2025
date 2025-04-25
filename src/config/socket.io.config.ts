@@ -19,7 +19,8 @@ export const ServerEvents = {
 } as const;
 type AllowedServerEvents = (typeof ServerEvents)[keyof typeof ServerEvents];
 type ServerHandler<T = any> = (args: {
-  status: "ok" | "notok";
+  ok: boolean;
+  clientId: string;
   payload: T;
 }) => void;
 type ServerToClientEvents = {
@@ -30,13 +31,13 @@ export default class SocketIO {
     null;
   static initSocket() {
     if (!this.client) {
-      this.client = io("http://localhost:4000");
+      this.client = io("ws://localhost:4000");
     }
   }
   static setSocketEventsListeners() {
     if (!this.client) return;
-    this.client.on(ServerEvents.connected, ({ status, payload }) => {
-      console.log({ status, payload });
+    this.client.on(ServerEvents.connected, ({ ok, clientId, payload }) => {
+      console.log({ ok, clientId, payload });
     });
     this.client.on(ServerEvents.updateHorarioResponse, UpdateHorarioHandler);
   }
